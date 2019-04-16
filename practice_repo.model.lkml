@@ -2,6 +2,7 @@ connection: "thelook"
 
 # include all the views
 include: "*.view"
+include: "*.dashboard"
 
 datagroup: practice_repo_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -12,6 +13,7 @@ persist_with: practice_repo_default_datagroup
 
 explore: events {
   join: users {
+
     type: left_outer
     sql_on: ${events.user_id} = ${users.id} ;;
     relationship: many_to_one
@@ -19,6 +21,8 @@ explore: events {
 }
 
 explore: inventory_items {
+  view_label: "Inventory mang"
+  sql_always_where: ${cost} > 1 ;;
   join: products {
     type: left_outer
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
@@ -27,6 +31,12 @@ explore: inventory_items {
 }
 
 explore: order_items {
+  always_filter: {
+    filters: {
+      field: id
+      value: "123"
+    }
+  }
   join: inventory_items {
     type: left_outer
     sql_on: ${order_items.inventory_item_id} = ${inventory_items.id} ;;
@@ -34,6 +44,7 @@ explore: order_items {
   }
 
   join: orders {
+
     type: left_outer
     sql_on: ${order_items.order_id} = ${orders.id} ;;
     relationship: many_to_one

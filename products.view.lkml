@@ -1,4 +1,5 @@
 view: products {
+  label: "Products that are productive"
   sql_table_name: demo_db.products ;;
 
   dimension: id {
@@ -22,6 +23,11 @@ view: products {
     sql: ${TABLE}.department ;;
   }
 
+dimension: women {
+  type:  yesno
+  sql: ${TABLE}.department = 'Women' ;;
+}
+
   dimension: item_name {
     type: string
     sql: ${TABLE}.item_name ;;
@@ -40,6 +46,25 @@ view: products {
   dimension: sku {
     type: string
     sql: ${TABLE}.sku ;;
+  }
+
+  measure: average_price{
+    description: "Its like the price but like the average..."
+    type: average
+    sql: ${retail_price};;
+    value_format_name: usd
+  }
+
+  measure: sum_price {
+    type: sum
+    sql: ${retail_price} ;;
+    value_format_name: usd
+  }
+
+  measure: median_price {
+    type: median
+    sql: ${retail_price} ;;
+    value_format_name: usd
   }
 
   measure: count {

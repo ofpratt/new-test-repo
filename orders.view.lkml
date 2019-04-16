@@ -32,6 +32,12 @@ view: orders {
     sql: ${TABLE}.user_id ;;
   }
 
+measure: newest_order{
+  type: string
+  sql:  max(${created_date})
+  ;;
+}
+
   measure: count {
     type: count
     drill_fields: [id, users.first_name, users.last_name, users.id, order_items.count]

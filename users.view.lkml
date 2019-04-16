@@ -12,6 +12,13 @@ view: users {
     sql: ${TABLE}.age ;;
   }
 
+  dimension: age_tier {
+    type: tier
+    tiers: [ 0,20,30,40,50,60]
+    style: integer
+    sql: ${TABLE}.age ;;
+  }
+
   dimension: city {
     type: string
     sql: ${TABLE}.city ;;
@@ -23,10 +30,6 @@ view: users {
     sql: ${TABLE}.country ;;
   }
 
-  dimension: zipcode {
-    type:  zipcode
-    sql: ${TABLE}.zipcode ;;
-  }
 
   dimension_group: created {
     type: time
@@ -65,6 +68,15 @@ view: users {
   dimension: state {
     type: string
     sql: ${TABLE}.state ;;
+  }
+
+  dimension: region {
+    type:  string
+    sql: case when ${TABLE}.state in ("Maine", "New Hampshire", "Vermont",
+    "West Virginia", "Virginia", "New York", "Rhode Island", "Pennsylvania", "New Jersey", "Delaware", "Maryland",
+    "North Carolina", "South Carolina") then "East Coast"
+    when ${TABLE}.state in ("California", "Oregon", "Washington") then "West Coast"
+    else "Who Cares LOL" end;;
   }
 
   dimension: zip {
