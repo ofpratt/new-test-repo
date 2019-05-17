@@ -82,7 +82,10 @@ view: users {
   dimension: zip {
     type: zipcode
     sql: ${TABLE}.zip ;;
+
   }
+
+
 
   measure: count {
     type: count
