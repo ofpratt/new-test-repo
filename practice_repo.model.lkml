@@ -16,7 +16,7 @@ datagroup: practice_repo_default_datagroup {
 persist_with: practice_repo_default_datagroup
 
 explore: api_test {
-  view_name: events
+  from: events
   join: users {
 
     type: left_outer
