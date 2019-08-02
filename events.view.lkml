@@ -21,6 +21,15 @@ view: events {
     sql: ${TABLE}.created_at ;;
   }
 
+filter: test {
+  type: date
+}
+
+dimension: yoy_analysis{
+  type: yesno
+  sql: {% date_start test %} = ${created_date}  ;;
+}
+
   dimension: type_id {
     type: number
     sql: ${TABLE}.type_id ;;

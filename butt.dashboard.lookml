@@ -51,6 +51,7 @@
     plot_size_by_field: false
     show_null_points: true
     interpolation: linear
+    colors: "#3accdd"
     row: 0
     col: 16
     width: 8

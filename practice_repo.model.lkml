@@ -15,7 +15,8 @@ datagroup: practice_repo_default_datagroup {
 
 persist_with: practice_repo_default_datagroup
 
-explore: events {
+explore: api_test {
+  view_name: events
   join: users {
 
     type: left_outer
@@ -25,7 +26,8 @@ explore: events {
 }
 
 explore: inventory_items {
-  view_label: "Inventory mang"
+  group_label: "Inventory BOI"
+  description: "Hello"
   sql_always_where: ${cost} > 1 ;;
   join: products {
     type: left_outer
@@ -35,6 +37,7 @@ explore: inventory_items {
 }
 
 explore: order_items {
+  group_label: "Inventory BOI"
   always_filter: {
     filters: {
       field: id
@@ -68,6 +71,7 @@ explore: order_items {
 }
 
 explore: orders {
+  label: "ORDERS!"
   join: users {
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
@@ -86,6 +90,7 @@ explore: user_data {
     relationship: many_to_one
   }
 }
+explore: test_derived_table {}
 
 explore: users {}
 

@@ -7,6 +7,11 @@ view: order_items {
     sql: ${TABLE}.id ;;
   }
 
+  dimension: odd_even {
+    type: yesno
+    sql: ${price_buckets} = "Hella High" ;;
+  }
+
   dimension: inventory_item_id {
     type: number
     # hidden: yes
@@ -36,6 +41,35 @@ view: order_items {
   dimension: sale_price {
     type: number
     sql: ${TABLE}.sale_price ;;
+  }
+
+  measure: sum_price {
+    type: sum
+    sql: ${sale_price} ;;
+  }
+
+  measure: both_sum {
+    type: number
+    sql: ${sum_price} + ${inventory_items.sum_cost} ;;
+  }
+
+  dimension: price_buckets {
+    type: string
+    case: {
+      when: {
+        sql: ${sale_price} >= 0 and ${sale_price} < 20 ;;
+        label: "Low"
+      }
+      when: {
+        sql: ${sale_price} >= 20 and ${sale_price} < 50 ;;
+        label: "Middle"
+      }
+      when: {
+        sql: ${sale_price} >= 50 and ${sale_price} < 100 ;;
+        label: "High"
+      }
+      else: "Hella High"
+    }
   }
 
   measure: count {

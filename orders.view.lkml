@@ -21,6 +21,31 @@ view: orders {
     sql: ${TABLE}.created_at ;;
   }
 
+
+  filter: test {
+    type: date
+    sql: {% date_start test %} <= ${created_date} and
+         {% date_end test %} > ${created_date} or
+        date_sub({% date_start test %}, interval 1 year) <= ${created_date} and
+         date_sub({% date_end test %}, interval 1 year) > ${created_date}  ;;
+  }
+
+  dimension: yoy_analysis{
+    type: yesno
+    sql: {% date_start test %} <= ${created_date} and
+         {% date_end test %} > ${created_date} or
+        date_sub({% date_start test %}, interval 1 year) <= ${created_date} and
+         date_sub({% date_end test %}, interval 1 year) > ${created_date}
+        ;;
+  }
+
+#   dimension: yoy_analysis_pt2{
+#     type: yesno
+#     sql: date_sub({% date_start test %}, interval 1 year) <= ${created_date} and
+#          date_sub({% date_end test %}, interval 1 year) >= ${created_date}
+#         ;;
+#   }
+
   dimension: status {
     type: string
     sql: ${TABLE}.status ;;
@@ -37,6 +62,15 @@ measure: newest_order{
   sql:  max(${created_date})
   ;;
 }
+
+# measure: test {
+#   type: max
+#   filters: {
+#     field: count
+#     value: "!= 1"
+#   }
+#   sql: ${created_date} ;;
+# }
 
   measure: count {
     type: count

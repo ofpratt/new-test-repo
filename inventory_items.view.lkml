@@ -50,4 +50,17 @@ view: inventory_items {
     type: count
     drill_fields: [id, products.item_name, products.id, order_items.count]
   }
+measure: sum_cost {
+  type: sum
+  sql: ${cost} ;;
+}
+
+measure: divide {
+  type: number
+  sql: ${count}/ ${sum_cost} ;;
+}
+  measure: test_mult {
+    type: number
+    sql: ${cost} * ${products.retail_price} ;;
+  }
 }
