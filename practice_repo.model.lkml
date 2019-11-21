@@ -2,7 +2,9 @@ connection: "thelook"
 
 # include all the views
 include: "*.view"
-include: "*.dashboard"
+# include: "*.dashboard"
+include: "butt.*"
+
 
 datagroup: practice_repo_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -38,12 +40,6 @@ explore: inventory_items {
 
 explore: order_items {
   group_label: "Inventory BOI"
-  always_filter: {
-    filters: {
-      field: id
-      value: "123"
-    }
-  }
   join: inventory_items {
     type: left_outer
     sql_on: ${order_items.inventory_item_id} = ${inventory_items.id} ;;

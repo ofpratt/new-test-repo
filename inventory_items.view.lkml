@@ -53,6 +53,17 @@ view: inventory_items {
 measure: sum_cost {
   type: sum
   sql: ${cost} ;;
+  filters:  {
+    field: product_id
+    value: "12345"
+  }
+}
+
+measure: sum_test {
+  type: number
+  sql: case when ${sum_cost} = 0 then null
+  else ${sum_cost}
+  end;;
 }
 
 measure: divide {

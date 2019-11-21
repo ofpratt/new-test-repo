@@ -1,5 +1,5 @@
-- dashboard: repo_dash
-  title: repo dash
+- dashboard: this_will_show_up_in_url
+  title: this_is_name
   layout: newspaper
   elements:
   - title: pie

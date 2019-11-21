@@ -18,6 +18,15 @@ view: order_items {
     sql: ${TABLE}.inventory_item_id ;;
   }
 
+  filter: odd_even_filter {
+    type: string
+  }
+
+  measure: count_with_id_number {
+    type: number
+    sql: count(${id}) where ${price_buckets} = {% condition odd_even_filter %} {{value}} {% endcondition %} ;;
+  }
+
   dimension: order_id {
     type: number
     # hidden: yes
