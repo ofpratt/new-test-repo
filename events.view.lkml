@@ -25,10 +25,10 @@ filter: test {
   type: date
 }
 
-dimension: yoy_analysis{
-  type: yesno
-  sql: {% date_start test %} = ${created_date}  ;;
-}
+# dimension: yoy_analysis{
+#   type: yesno
+#   sql: {% date_start test %} = ${created_date}  ;;
+# }
 
   dimension: type_id {
     type: number

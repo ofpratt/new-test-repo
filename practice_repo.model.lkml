@@ -86,7 +86,7 @@ explore: user_data {
     relationship: many_to_one
   }
 }
-explore: test_derived_table {}
+#explore: test_derived_table {}
 
 explore: users {}
 
