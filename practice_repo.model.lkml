@@ -2,7 +2,7 @@ connection: "thelook"
 
 # include all the views
 include: "*.view"
-# include: "*.dashboard"
+include: "*.dashboard"
 include: "butt.*"
 
 
@@ -38,7 +38,8 @@ explore: inventory_items {
   }
 }
 
-explore: order_items {
+explore: order_mc_items {
+  view_name: order_items
   group_label: "Inventory BOI"
   join: inventory_items {
     type: left_outer
