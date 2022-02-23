@@ -95,7 +95,7 @@
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     defaults_version: 1
-    #hidden_fields:
+    #hidden_fields: []
     y_axes: []
     listen:
       Brand: products.brand
