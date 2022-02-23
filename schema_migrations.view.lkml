@@ -11,6 +11,11 @@ view: schema_migrations {
     sql:  "wooooooooooooooooeaw" ;;
   }
 
+  dimension: swoooo {
+    type: string
+    sql: "beeeeeeep" ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [filename]
