@@ -7,6 +7,11 @@ view: orders {
     sql: ${TABLE}.id ;;
   }
 
+  dimension: merge_conflicty {
+    type: string
+    sql: "Oh no!" ;;
+  }
+
   dimension_group: created {
     type: time
     timeframes: [
