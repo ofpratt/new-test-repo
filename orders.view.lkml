@@ -7,9 +7,9 @@ view: orders {
     sql: ${TABLE}.id ;;
   }
 
-  dimension: oh_no {
-    type: number
-    sql: 1 ;;
+  dimension: merge_conflicty {
+    type: string
+    sql: "Oh no!" ;;
   }
 
   dimension_group: created {
