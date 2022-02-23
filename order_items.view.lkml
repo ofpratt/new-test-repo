@@ -12,6 +12,16 @@ view: order_items {
     sql: ${price_buckets} = "Hella High" ;;
   }
 
+  dimension: oooo_advanced_deploy {
+    type: string
+    sql: "wowowowow" ;;
+  }
+
+  dimension: bing_bong {
+    type: string
+    sql: "f ur life" ;;
+  }
+
   dimension: inventory_item_id {
     type: number
     # hidden: yes
