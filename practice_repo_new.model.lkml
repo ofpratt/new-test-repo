@@ -3,7 +3,6 @@ connection: "thelook"
 # include all the views
 include: "*.view"
 include: "*.dashboard"
-include: "butt.*"
 
 
 datagroup: practice_repo_default_datagroup {
@@ -11,11 +10,6 @@ datagroup: practice_repo_default_datagroup {
   max_cache_age: "1 hour"
 }
 
-#hhhhhhhhhhhhhhhhhhh
-
-#advanced deployyyyyy
-
-#wowowowowowow deploy deploy!!!!
 
 persist_with: practice_repo_default_datagroup
 
